@@ -1,21 +1,36 @@
 from django import forms
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
 from accounts.models import User
 
 
-class RegisterForm(forms.Form):
-    lastName = forms.CharField(max_length=256)
-    familyName = forms.CharField(max_length=256)
-    uniqueCode = forms.CharField(max_length=10)
-    PhoneNumber = forms.CharField(max_length=11)
-    email = forms.EmailField()
-    BirthDay = forms.DateTimeField()
-    password = forms.CharField(widget=forms.PasswordInput())
-    confirm = forms.CharField(widget=forms.PasswordInput())
+class UserCreationForm(forms.ModelForm):
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
 
-    def clean(self):
-        p1 = self.cleaned_data['password']
-        p2 = self.cleaned_data['confirm']
-        if p1 != p2:
+    class Meta:
+        model = User
+        fields = ('last_name', 'family_name', 'unique_code', 'phone_number', 'email', 'birthday', 'password')
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password1'] and cd['password2'] and cd['password1'] != cd['password2']:
             raise ValidationError('Password ِDoes Not Match !!!')
+        return cd['password2']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password1'])
+        if commit:
+            user.save()
+        return user
+
+
+class UserChangeForm(forms.ModelForm):
+    password = ReadOnlyPasswordHashField(
+        help_text="you cant change password using <a href=\"../passwrd/\">this form </a>.")
+
+    class Meta:
+        model = User
+        fields = ('last_name', 'family_name', 'unique_code', 'phone_number', 'email', 'birthday', 'password')

@@ -35,9 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # two party apps
     'home.apps.HomeConfig',
-    'jalali_date',
     'accounts.apps.AccountsConfig',
+    # third party apps
+    'jalali_date',
 ]
 JALALI_DATE_DEFAULTS = {
     'Strftime': {
@@ -133,3 +135,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.User'
