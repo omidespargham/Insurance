@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # two party apps
     'home.apps.HomeConfig',
-    'accounts.apps.AccountsConfig',
+    "car.apps.CarConfig",
     # third party apps
     'jalali_date',
 ]
@@ -136,4 +136,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.User'
+
