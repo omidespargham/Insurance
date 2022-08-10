@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>request form</h1>
-<form action="" method="post">
+<form action="" method="post" novalidate>
     {% csrf_token %}
-    {{ form2.as_p }}
+    {{ form_user.as_p }}
     {{ form.as_p }}
     <input type="submit">
 </form>
