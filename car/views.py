@@ -9,13 +9,13 @@ from car.models import ThirdPartyModel
 
 class RegisterView(View):
     form_class = ThirdPartyForm
-    template_name = 'car/ThirdPartyRequest.html'
+    template_name = 'car/ThirdPartyRegister.html'
 
     def get(self, request):
-        return render(request, 'car/ThirdPartyRequest.html', {'form': self.form_class, "form_user": BimeUserForm})
+        return render(request, self.template_name, {'form': self.form_class, "form_user": BimeUserForm})
 
     def post(self, request):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         form_user = BimeUserForm(request.POST)
         if form.is_valid() and form_user.is_valid():
             cl = form.cleaned_data
@@ -29,7 +29,11 @@ class RegisterView(View):
                                            accident_discounts=cl["accident_discounts"],
                                            number_of_accidents=cl["number_of_accidents"],
                                            number_of_incidents=cl["number_of_incidents"],
-                                           expiration_date=cl["expiration_date"]
+                                           expiration_date=cl["expiration_date"],
+                                           face_image=cl['face_image'],
+                                           back_image=cl['back_image'],
+                                           image_insurance_policy=cl['image_insurance_policy'],
                                            )
+
             return redirect("home:home")
         return render(request, self.template_name, {"form": form, "form_user": form_user})
