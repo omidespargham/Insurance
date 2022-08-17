@@ -5,9 +5,9 @@ from car.forms import ThirdPartyForm
 from home.forms import BimeUserForm
 from home.models import BimeUser
 from car.models import ThirdPartyModel
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-class RegisterView(View):
+class RegisterView(LoginRequiredMixin,View):
     form_class = ThirdPartyForm
     template_name = 'car/ThirdPartyRegister.html'
 
