@@ -1,5 +1,5 @@
 from django.db import models
-from django_jalali.db.models import jDateTimeField,jDateField
+from django_jalali.db.models import jDateField
 from home.models import BimeUser
 
 
@@ -8,7 +8,7 @@ class ThirdPartyModel(models.Model):  # مدل شخص ثالث
     vehicle_type = models.CharField(max_length=128)  # گروه وسیله نقلیه
     car_type = models.CharField(max_length=256)  # نوع خودرو
     used = models.CharField(max_length=64)  # مورد استفاده (شخصی ، تاکسی، مسافربری درون شهری ، مسافربری برون شهری )
-    year_of_manufacture = models.CharField(max_length=8)  # سال ساخت خودرو
+    year_of_manufacture = models.IntegerField()  # سال ساخت خودرو
     third_discount = models.IntegerField(default=0)  # درصد تخفیف  مندرج برگه شخص ثالث
     accident_discounts = models.IntegerField(default=0)  # درصد تخفیف بیمه حوادث
     number_of_accidents = models.CharField(max_length=128)  # سوابق خسارت بیمه شخص ثالث

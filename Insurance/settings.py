@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     "car.apps.CarConfig",
     "accounts.apps.AccountsConfig",
+    "Individual_incidents.apps.IndividualIncidentsConfig",
     # third party apps
     'django_jalali',
 ]
