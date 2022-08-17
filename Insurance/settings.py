@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # two party apps
     'home.apps.HomeConfig',
     "car.apps.CarConfig",
+    "Individual_incidents.apps.IndividualIncidentsConfig",
     # third party apps
     'django_jalali',
 ]
