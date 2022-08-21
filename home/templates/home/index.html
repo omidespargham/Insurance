@@ -1,13 +1,22 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-</head>
-<body> -->
 {% extends 'base.html' %}
 {% block body%}
+{% load static %}
 <h1>Home Page</h1>
-<h1><a href="{% url 'car:register' %}">register</a></h1>
-<h1><a href="{% url 'Individual_incidents:individual_incidents' %}">Individual incidents</a></h1>
-{% endblock%}
+<a href="{% url 'car:register' %}" class="card" style="width: 18rem;display: inline-block;">
+    <img class="card-img-top" src="{% static 'pics/nerbchoovyri.jpeg' %}" alt="بیمه شخص ثالث">
+    <div class="card-body">
+      <h5 class="card-title">بیمه شخص ثالث</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</a>
+
+<a href="{% url 'Individual_incidents:register' %}" class="card" style="width: 18rem;display: inline-block;">
+      <img class="card-img-top" src="{% static 'pics/havades.jpg' %}" alt="بیمه حوادث">
+      <div class="card-body">
+        <h5 class="card-title">بیمه حوادث</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+  </a>
+  {% endblock%}
+  <!-- <h1><a href="{% url 'car:register' %}">register</a></h1>
+  <h1><a href="{% url 'Individual_incidents:register' %}">Individual incidents</a></h1> -->

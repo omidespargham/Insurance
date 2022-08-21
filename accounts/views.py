@@ -19,7 +19,9 @@ class UserRegisterView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            messages.success(request, f"برای ثبت حساب جدید ابتدا از حساب خود خارج شوید", "warning")
             return redirect("home:home")
+        request.next = request.GET.get("next")
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
@@ -40,12 +42,20 @@ class UserRegisterView(View):
             # }
             user = User.objects.create_user(phone_number=cl["phone_number"],
                                                 full_name=cl["full_name"], password=cl["password"])
-            messages.success(request, f"{user.full_name} shoma sabt nam kardid", "success")
+            authed_user = authenticate(username=cl["phone_number"],password=cl["password"])
+            if authed_user:
+                messages.success(request, f"{user.full_name} shoma sabt nam kardid", "success")
+                login(request,authed_user)
+                if request.next:
+                    return redirect(request.next)
+                return redirect("home:home")
             # random_code = randint(0, 9999)
             # RGScode.objects.create(
             #     phone_number=cl["phone_number"], code=random_code)
             # send_rgs_code(cl["phone_number"],random_code)
+
             return redirect("accounts:user_login")
+
         # messages.success(request, f"{user.full_name} etelaat na motabar", "success")
         return render(request, self.template_name, {"form": form})
 
@@ -56,7 +66,9 @@ class UserLogInView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            messages.success(request, f"برای ورود با حسابی دیگر ابتدا از حساب خود خارج شوید", "warning")
             return redirect("home:home")
+        request.next = request.GET.get("next")
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
@@ -73,8 +85,10 @@ class UserLogInView(View):
             if user:
                 login(request, user)
                 messages.success(request, "khosh amadid", "success")
+                if request.next:
+                    return redirect(request.next)
                 return redirect("home:home")
-            messages.error(request, "email ya pass eshteba ast", "danger")
+            messages.error(request, "shomare ya pass eshteba ast", "danger")
 
         return render(request, self.template_name, {"form": form})
 
@@ -118,7 +132,6 @@ class UserRegisterVerifyView(View):
             except RGScode.DoesNotExist:
                 messages.error(request, "code eshteba ast", "danger")
         return render(request, self.template_name, {"form": form})
-
 
 # class UserProfileView(LoginRequiredMixin, View):
 #     template_name = "accounts/user_profile.html"

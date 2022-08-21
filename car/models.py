@@ -1,10 +1,10 @@
 from django.db import models
 from django_jalali.db.models import jDateField
-from home.models import BimeUser
-
+# from home.models import BimeUser
+from accounts.models import User
 
 class ThirdPartyModel(models.Model):  # مدل شخص ثالث
-    user = models.ForeignKey(BimeUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     vehicle_type = models.CharField(max_length=128)  # گروه وسیله نقلیه
     car_type = models.CharField(max_length=256)  # نوع خودرو
     used = models.CharField(max_length=64)  # مورد استفاده (شخصی ، تاکسی، مسافربری درون شهری ، مسافربری برون شهری )
@@ -19,4 +19,4 @@ class ThirdPartyModel(models.Model):  # مدل شخص ثالث
     image_insurance_policy = models.ImageField(upload_to='car/')  # تصویر بیمه نامه قبلی
 
     def __str__(self):
-        return self.user.last_name
+        return self.user.full_name

@@ -3,11 +3,11 @@
 
     <div class="collapse navbar-collapse center_nav" id="navbarNav" style="justify-content: center;">
       <ul class="navbar-nav nav-container">
-        {% if user.is_authenticated %}
-
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}">Home</a>
         </li>
+        {% if user.is_authenticated %}
+
 
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'accounts:user_logout' %}">LogOut</a>

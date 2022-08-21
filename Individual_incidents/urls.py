@@ -1,7 +1,7 @@
 from django.urls import path
-from Individual_incidents.views import Individual_Incidents
+from Individual_incidents import views
 
 app_name = 'individual_incidents'
 urlpatterns = [
-    path('', Individual_Incidents.as_view(), name='individual_incidents')
+    path('register/', views.Individual_Incidents.as_view(), name='register')
 ]

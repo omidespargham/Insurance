@@ -5,7 +5,7 @@ class IndividualIncidentsForm(forms.Form):
     limit_time_chooses = [
         ('3', "3 ماه"),
         ('6', "6 ماه"),
-        ('6 ', "9 ماه"),
+        ('9', "9 ماه"),
         ('1Y', "یک سال"),  # 1Y = یک سال
     ]
     job_category_chooses = [

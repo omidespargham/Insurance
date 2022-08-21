@@ -91,9 +91,10 @@ class ThirdPartyForm(forms.Form):
         ('دوبار بار خسارت جانی', 'دوبار بار خسارت جانی'),
         ('سه بارو یا بیشترخسارت جانی', 'سه بارو یا بیشترخسارت جانی'),
     ]
+
     vehicle_type_chooses = [
         ('سواری', "سواری"),
-        ('واننت', "واننت"),
+        ('وانت', "وانت"),
         ('ون', "ون"),
         ('کامیون', "کامیون"),
         ('کامیونت', "کامیونت"),
@@ -103,7 +104,7 @@ class ThirdPartyForm(forms.Form):
 
     vehicle_type = forms.ChoiceField(choices=vehicle_type_chooses, label='گروه وسیله نقلیه')  # گروه وسیله نقلیه
 
-    car_type = forms.CharField(label='نوع خودرو ', max_length=256)  # نوع خودرو
+    car_type = forms.ChoiceField(choices=vehicle_type_chooses,label='نوع خودرو ')  # نوع خودرو
 
     used = forms.ChoiceField(
         choices=used_chooses,
@@ -131,3 +132,6 @@ class ThirdPartyForm(forms.Form):
     back_image = forms.ImageField(label='تصویر پشت کارت ماشن ')  # تصویر پشت کارت ماشن
 
     image_insurance_policy = forms.ImageField(label='تصویر بیمه نامه قبلی ')  # تصویر بیمه نامه قبلی
+
+
+
