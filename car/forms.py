@@ -1,128 +1,30 @@
 from django import forms
 from django_jalali.forms import jDateField
 from django_jalali.admin.widgets import AdminjDateWidget
-
+from car import forms_choices
 
 class ThirdPartyForm(forms.Form):
-    accident_discounts_choices = [
-        (0, '0'),
-        (5, '5'),
-        (10, '10'),
-        (15, '15'),
-        (20, '20'),
-        (25, '25'),
-        (30, '30'),
-        (35, '35'),
-        (40, '40'),
-        (45, '45'),
-        (50, '50'),
-        (55, '55'),
-        (60, '60'),
-        (65, '65'),
-        (70, '70'),
-    ]
-    third_discount_choices = [
-        (0, '0'),
-        (5, '5'),
-        (10, '10'),
-        (15, '15'),
-        (20, '20'),
-        (25, '25'),
-        (30, '30'),
-        (35, '35'),
-        (40, '40'),
-        (45, '45'),
-        (50, '50'),
-        (55, '55'),
-        (60, '60'),
-        (65, '65'),
-        (70, '70'),
-    ]
-    used_chooses = [
-        ('شخصی', "شخصی"),
-        ('تاکسی', "تاکسی"),
-        ('مسافربری درون شهری', "مسافربری درونشهری"),
-        ('مسافربری برون شهری', "مسافربری برون شهری"),
-    ]
-    number_of_accidents_choices = [
-        ('یک بار خسارت مالی', 'یک بار خسارت مالی'),
-        ('دو بار خسارت مالی', 'دو بار خسارت مالی'),
-        ('سه بار و یا بیشتر خسارت مالی', 'سه بار و یا بیشتر خسارت مالی'),
-        ('دوبار بار خسارت جانی', 'یک بار خسارت جانی'),
-        ('دوبار بار خسارت جانی', 'دوبار بار خسارت جانی'),
-        ('سه بارو یا بیشترخسارت جانی', 'سه بارو یا بیشترخسارت جانی'),
-
-    ]
-    year_of_manufacture_chooses = [
-        (1401_2022, ' 1401 - 2022 '),
-        (1400_2021, ' 1400 - 2021 '),
-        (1399_2020, ' 1399 - 2020 '),
-        (1398_2019, ' 1398 - 2019 '),
-        (1397_2018, ' 1397 - 2018 '),
-        (1396_2017, ' 1396 - 2017 '),
-        (1395_2016, ' 1395 - 2016 '),
-        (1394_2015, ' 1394 - 2015 '),
-        (1393_2014, ' 1393 - 2014 '),
-        (1392_2013, ' 1392 - 2013 '),
-        (1391_2012, ' 1391 - 2012 '),
-        (1390_2011, ' 1390 - 2011 '),
-        (1389_2010, ' 1389 - 2010 '),
-        (1388_2009, ' 1388 - 2009 '),
-        (1387_2008, ' 1387 - 2008 '),
-        (1386_2007, ' 1386 - 2007 '),
-        (1385_2006, ' 1385 - 2006 '),
-        (1384_2005, ' 1384 - 2005 '),
-        (1383_2004, ' 1383 - 2004 '),
-        (1382_2003, ' 1382 - 2003 '),
-        (1381_2002, ' 1381 - 2002 '),
-        (1380_2001, ' 1380 - 2001 '),
-        (1379_2000, ' 1379 - 2000 '),
-        (1377_1998, ' 1377 - 1998 '),
-        (1376_1997, ' 1376 - 1997 '),
-        (1375_1996, ' 1375 - 1996 '),
-        (1374_1995, ' 1374 - 1995 '),
-        (1373_1994, ' 1373 - 1994 '),
-        (1372_1993, ' 1372 - 1993 '),
-        (1371_1992, ' 1371 - 1992 '),
-
-    ]
-    number_of_incidents_choices = [
-        ('یک بار خسارت جانی', 'یک بار خسارت جانی'),
-        ('دوبار بار خسارت جانی', 'دوبار بار خسارت جانی'),
-        ('سه بارو یا بیشترخسارت جانی', 'سه بارو یا بیشترخسارت جانی'),
-    ]
-
-    vehicle_type_chooses = [
-        ('سواری', "سواری"),
-        ('وانت', "وانت"),
-        ('ون', "ون"),
-        ('کامیون', "کامیون"),
-        ('کامیونت', "کامیونت"),
-        ('اتوبوس', "اتوبوس"),
-        ('مینی بوس', "مینی بوس"),
-    ]
-
-    vehicle_type = forms.ChoiceField(choices=vehicle_type_chooses, label='گروه وسیله نقلیه')  # گروه وسیله نقلیه
-
-    car_type = forms.ChoiceField(choices=vehicle_type_chooses,label='نوع خودرو ')  # نوع خودرو
+    vehicle_type = forms.ChoiceField(choices=forms_choices.vehicle_type_chooses, label='گروه وسیله نقلیه')  # گروه وسیله نقلیه
+    # if you change car_type_name change the script #id too 
+    car_type_name = forms.ChoiceField(choices=forms_choices.car_type_name,label='نوع خودرو ')  # نوع خودرو
 
     used = forms.ChoiceField(
-        choices=used_chooses,
+        choices=forms_choices.used_chooses,
         label='مورد استفاده ')  # مورد استفاده (شخصی ، تاکسی، مسافربری درون شهری ، مسافربری برون شهری )
 
-    year_of_manufacture = forms.ChoiceField(choices=year_of_manufacture_chooses,
+    year_of_manufacture = forms.ChoiceField(choices=forms_choices.year_of_manufacture_chooses,
                                             label='سال ساخت خودرو ')  # سال ساخت خودرو
 
-    third_discount = forms.ChoiceField(choices=third_discount_choices,
+    third_discount = forms.ChoiceField(choices=forms_choices.third_discount_choices,
                                        label='درصد تخفیف  مندرج برگه شخص ثالث ')  # درصد تخفیف  مندرج برگه شخص ثالث
 
-    accident_discounts = forms.ChoiceField(choices=accident_discounts_choices,
+    accident_discounts = forms.ChoiceField(choices=forms_choices.accident_discounts_choices,
                                            label='درصد تخفیف بیمه حوادث ')  # درصد تخفیف بیمه حوادث
 
-    number_of_accidents = forms.ChoiceField(choices=number_of_accidents_choices,
+    number_of_accidents = forms.ChoiceField(choices=forms_choices.number_of_accidents_choices,
                                             label='سوابق خسارت بیمه شخص ثالث ')  # سوابق خسارت بیمه شخص ثالث
 
-    number_of_incidents = forms.ChoiceField(choices=number_of_incidents_choices,
+    number_of_incidents = forms.ChoiceField(choices=forms_choices.number_of_incidents_choices,
                                             label=' سوابق خسارت بیمه حوادث راننده ')  # سوابق خسارت بیمه حوادث راننده
 
     expiration_date = jDateField(widget=AdminjDateWidget, label='تاریخ انقضا بیمه نامه ')  # تاریخ انقضا بیمه نامه
