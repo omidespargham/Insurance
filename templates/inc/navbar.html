@@ -1,33 +1,212 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-
-    <div class="collapse navbar-collapse center_nav" id="navbarNav" style="justify-content: center;">
-      <ul class="navbar-nav nav-container">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}">Home</a>
-        </li>
-        {% if user.is_authenticated %}
+{% load static %}
+<header class="header-area fixed-top">
 
 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'accounts:user_logout' %}">LogOut</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home:home' %}" style="right: 30px;position: absolute;">{{request.user.full_name}}</a>
-        </li>
-        {% else %}
+  <div class="nav-area nev-style-two">
+    <div class="navbar-area is-sticky">
+      <!-- phone platform navbar  -->
+      <div class="mobile-nav">
+        <a href="{% url 'home:home' %}" class="logo">
+          <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
+        </a>
+      </div>
 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'accounts:user_register' %}">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'accounts:user_login' %}">LogIn</a>
-        </li>
-        {% endif %}
+      <div class="main-nav">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <div class="container">
+            <!-- logo -->
+            <a class="navbar-brand" href="{% url 'home:home' %}">
+              <img src="{% static 'assets/img/home-one-logo.png' %}" alt="Logo">
+            </a>
+            <!-- navbar items -->
+            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+              <ul class="navbar-nav m-auto">
+                <!-- خانه -->
+                <li class="nav-item">
+                  <a href="{% url 'home:home' %}" class="nav-link">صفحه اصلی
+                    <!-- <i class="bx bx-plus"></i> -->
+                  </a>
+                  <!-- <ul class="dropdown-menu">
+                                      <li class="nav-item">
+                                          <a href="index.html" class="nav-link">صفحه
+                                              اصلی 1</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="index-2.html" class="nav-link active">صفحه
+                                              اصلی 2</a>
+                                      </li>
+                                  </ul> -->
+                </li>
+                <!-- درباره ما  -->
+                <li class="nav-item">
+                  <a href="about.html" class="nav-link">درباره ما</a>
+                </li>
+                <!-- بیمه ها  -->
+                <li class="nav-item">
+                  <a href="#" class="nav-link dropdown-toggle">
+                    بیمه
+                    <i class="bx bx-plus"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="{% url 'car:register' %}" class="nav-link">بیمه شخس ثالث</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link dropdown-toggle">
+                    وبلاگ
+                    <i class="bx bx-plus"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="blog-grid.html" class="nav-link">وبلاگ
+                        شبکه ای</a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- تماس با ما  -->
+                <li class="nav-item">
+                  <a href="contact.html" class="nav-link">تماس با ما</a>
+                </li>
+              </ul>
 
+              <div class="others-option">
+                <!-- <div class="option-item">
+                                      <i class="search-btn bx bx-search"></i>
+                                      <i class="close-btn bx bx-x"></i>
+                                      <div class="search-overlay search-popup">
+                                          <div class='search-box'>
+                                              <form class="search-form">
+                                                  <input class="search-input" name="search" placeholder="جستجو"
+                                                      type="text">
+                                                  <button class="search-button" type="submit"><i
+                                                          class="bx bx-search"></i></button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                  </div> -->
+                <div class="subscribe">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'accounts:user_logout' %}" class="default-btn">
+                    خروج
+                  </a>
+                  {% else %}
+                  <a href="{% url 'accounts:user_register' %}" class="default-btn">
+                    ورود / ثبت نام
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="sidebar-menu">
+                  <a href="#" data-toggle="modal" data-target="#myModal2">
+                    <i class="bx bx-grid-alt"></i>
+                  </a>
+                </div>
+              </div>
 
-
-      </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
-</nav>
+
+</header>
+
+<div class="sidebar-modal">
+  <div class="modal right fade" id="myModal2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="bx bx-x"></i>
+            </span>
+          </button>
+          <h2 class="modal-title">
+            <a href="index.html">
+              <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
+            </a>
+          </h2>
+        </div>
+        <div class="modal-body">
+          <div class="sidebar-modal-widget">
+            <h3 class="title">درباره ما</h3>
+            <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
+              استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را
+              در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده است. لورم
+              ایپسوم ساختار چاپ و متن را در بر می گیرد.</p>
+          </div>
+          <div class="sidebar-modal-widget">
+            <h3 class="title">پیوندهای اضافی</h3>
+            <ul>
+              <li>
+                <a href="log-in.html">وارد شوید</a>
+              </li>
+              <li>
+                <a href="sign-in.html">ثبت نام</a>
+              </li>
+              <li>
+                <a href="faq.html">سوالات متداول</a>
+              </li>
+              <li>
+                <a href="#">خروج</a>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-modal-widget">
+            <h3 class="title">اطلاعات مشتری</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="bx bx-location-plus"></i>
+                آدرس
+                <span>ایران ، استان تهران ، میدان آزادی ، خیابان
+                  9 شرقی</span>
+              </li>
+              <li>
+                <i class="bx bx-envelope"></i>
+                ایمیل
+                <a href="mailto:hello@surety.com">hello@surety.com</a>
+              </li>
+              <li>
+                <i class="bx bxs-phone-call"></i>
+                تلفن
+                <a href="tel:+822456974">02112345678</a>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-modal-widget">
+            <h3 class="title">با ما در ارتباط باشید</h3>
+            <ul class="social-list">
+              <li>
+                <a href="#">
+                  <i class='bx bxl-twitter'></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class='bx bxl-facebook'></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class='bx bxl-instagram'></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class='bx bxl-linkedin'></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class='bx bxl-youtube'></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

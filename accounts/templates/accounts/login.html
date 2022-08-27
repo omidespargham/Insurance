@@ -8,29 +8,29 @@
     {{form.as_p}}
     <input type="submit" value="login"><span><a href="">forgot password ?</a></span>
 </form> -->
-
-<div class="center">
-  <form action="" method="post">
-    {% csrf_token %}
-    {{form.phone_number.errors}}
-    <div class="txt_field">
-      {{form.phone_number}}
-      <span></span>
-      <label>PhoneNumber</label>
-    </div>
-    {{form.password.errors}}
-    <div class="txt_field">
-      {{form.password}}
-      <span></span>
-      <label>Password</label>
-    </div>
-    <div class="pass"><a href="#">Forgot Password?</a></div>
-    <input type="submit" value="Login">
-    <div class="signup_link">
-      Not a member? <a 
-      href="{% url 'accounts:user_register' %}{% if request.next %}?next={{request.next}} {% endif %}">Register</a>
-    </div>
-  </form>
+<div class="full_container">
+  <div class="center">
+    <form action="" method="post">
+      {% csrf_token %}
+      {{form.phone_number.errors}}
+      <div class="txt_field">
+        {{form.phone_number}}
+        <span></span>
+        <label>PhoneNumber</label>
+      </div>
+      {{form.password.errors}}
+      <div class="txt_field">
+        {{form.password}}
+        <span></span>
+        <label>Password</label>
+      </div>
+      <div class="pass"><a href="#">Forgot Password?</a></div>
+      <input type="submit" value="Login">
+      <div class="signup_link">
+        Not a member? <a
+          href="{% url 'accounts:user_register' %}{% if request.next %}?next={{request.next}} {% endif %}">Register</a>
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
-

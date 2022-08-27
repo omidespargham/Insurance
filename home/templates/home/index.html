@@ -1,22 +1,165 @@
 {% extends 'base.html' %}
-{% block body%}
 {% load static %}
-<h1>Home Page</h1>
-<a href="{% url 'car:register' %}" class="card" style="width: 18rem;display: inline-block;">
-    <img class="card-img-top" src="{% static 'pics/nerbchoovyri.jpeg' %}" alt="بیمه شخص ثالث">
-    <div class="card-body">
-      <h5 class="card-title">بیمه شخص ثالث</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-</a>
+{% block body%}
 
-<a href="{% url 'Individual_incidents:register' %}" class="card" style="width: 18rem;display: inline-block;">
-      <img class="card-img-top" src="{% static 'pics/havades.jpg' %}" alt="بیمه حوادث">
-      <div class="card-body">
-        <h5 class="card-title">بیمه حوادث</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<section class="choose-us-area choose-us-area-two pt-100 pb-70">
+  <div class="container">
+    <div class="section-title">
+      <!-- <span>امکانات ما</span> -->
+      <h2>ما شرکت برنده جایزه هستیم</h2>
+      <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده است.
+        لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده
+        است.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-choose wow fadeInUp" data-wow-delay=".2s">
+          <span class="flaticon-car-insurance"></span>
+          <h3>شرکت قابل اعتماد</h3>
+          <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+            صنعت بوده است.</p>
+          <a href="{% url 'car:register' %}">
+            <i class="flaticon-left"></i>
+          </a>
+        </div>
       </div>
-  </a>
-  {% endblock%}
-  <!-- <h1><a href="{% url 'car:register' %}">register</a></h1>
-  <h1><a href="{% url 'Individual_incidents:register' %}">Individual incidents</a></h1> -->
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-choose wow fadeInUp" data-wow-delay=".3s">
+          <span class="flaticon-money"></span>
+          <h3>تضمین بازگشت پول</h3>
+          <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+            صنعت بوده است.</p>
+          <a href="insurance-details.html">
+            <i class="flaticon-left"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-choose wow fadeInUp" data-wow-delay=".4s">
+          <span class="flaticon-support"></span>
+          <h3>پشتیبانی عالی</h3>
+          <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+            صنعت بوده است.</p>
+          <a href="insurance-details.html">
+            <i class="flaticon-left"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-choose wow fadeInUp" data-wow-delay=".5s">
+          <span class="flaticon-contract"></span>
+          <h3>لغو در هر زمان</h3>
+          <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+            صنعت بوده است.</p>
+          <a href="insurance-details.html">
+            <i class="flaticon-left"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chooses-us-area-two pt-100 pb-70">
+  <div class="container">
+          <div class="section-title">
+                  <span>ما را انتخاب کنید</span>
+                  <h2>چرا ما را انتخاب کنید</h2>
+                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده است.
+                          لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.</p>
+          </div>
+          <div class="choose-us-wrap">
+                  <ul>
+                          <li>
+                                  <i class="flaticon-health-care"></i>
+                                  <h3>مشتریان متمرکز شده اند</h3>
+                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+                                          صنعت بوده است.</p>
+                          </li>
+                          <li>
+                                  <i class="flaticon-kindness"></i>
+                                  <h3>خدمات با عشق</h3>
+                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+                                          صنعت بوده است.</p>
+                          </li>
+                          <li>
+                                  <i class="flaticon-support"></i>
+                                  <h3>پشتیبانی 24/7</h3>
+                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+                                          صنعت بوده است.</p>
+                          </li>
+                  </ul>
+          </div>
+  </div>
+</section>
+
+
+<section class="any-contact-area">
+  <div class="container" style="padding-top: 50px;">
+          <div class="row">
+                  <div class="col-lg-8 col-md-6">
+                          <div class="contact-text">
+                                  <h3>آیا سوالی دارید؟ هر چیزی را از ما بخواهید ، ما دوست داریم پاسخ دهیم!
+                                  </h3>
+                          </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                          <div class="contact-call">
+                                  <h3>
+                                          <i class="flaticon-call"></i>
+                                          02112345678
+                                  </h3>
+                          </div>
+                  </div>
+          </div>
+  </div>
+</section>
+
+<section class="about-area ptb-100">
+  <div class="container">
+          <div class="row align-items-center">
+                  <div class="col-lg-6 col-md-6">
+                          <div class="about-content">
+                                  <span>درباره ما</span>
+                                  <h2>بیمه همیشه آماده است تا از زندگی و تجارت خود محافظت کند</h2>
+                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+                                          صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.
+                                  </p>
+                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
+                                          صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.
+                                          لورم ایپسوم استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و
+                                          متن را در بر می گیرد.</p>
+                                  <div class="about-list">
+                                          <div class="row">
+                                                  <div class="col-lg-6">
+                                                          <div class="about-single-list list-2">
+                                                                  <i class="flaticon-social-care-1"></i>
+                                                                  <span>مشتری را زیر پوشش می دهیم</span>
+                                                          </div>
+                                                  </div>
+                                                  <div class="col-lg-6">
+                                                          <div class="about-single-list">
+                                                                  <i class="flaticon-target"></i>
+                                                                  <span>100+ مشارکت جامعه در راه حل</span>
+                                                          </div>
+                                                  </div>
+                                          </div>
+                                  </div>
+                                  <a href="about.html" class="default-btn">
+                                          جزئیات را بدانید
+                                  </a>
+                          </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                          <div class="about-img-3 wow fadeInRight" data-wow-delay=".2s">
+                                  <img src="{% static 'assets/img/about-img-3.jpg' %}" alt="Image">
+                                  <div class="about-img-2">
+                                          <img src="{% static 'assets/img/about-img-2.jpg' %}" alt="Image">
+                                  </div>
+                          </div>
+                  </div>
+          </div>
+  </div>
+</section>
+
+{% endblock%}
