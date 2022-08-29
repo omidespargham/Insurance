@@ -337,10 +337,10 @@ HOME PAGE ONE STYLE
 /*
 Header Area Style
 ======================================================*/
-.header-area .top-header-area {
+/* .header-area .top-header-area { */
   /* padding: 15px 0; */
   /* background-color: #262566; */
-}
+/* } */
 
 .header-area .top-header-area .header-content-left p {
   color: #262566;
@@ -2968,7 +2968,8 @@ padding-right: 20px;
 .appointment-here-form .nice-select span {
 text-align: right;
   position: relative;
-  top: 2px;
+  /* top: 2px; */
+  bottom: 10px;
 }
 
 .appointment-here-form .nice-select::after {
@@ -4932,11 +4933,11 @@ Service Details Area Style
 /*
 Blog Details Area Style
 =====================================================*/
-.blog-details-area {
+/* .blog-details-area { */
   /*
 	Sidebar Widget Area Style
 	================================*/
-}
+/* } */
 
 .blog-details-area .blog-details-desc .article-image {
   position: relative;

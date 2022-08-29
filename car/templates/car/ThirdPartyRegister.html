@@ -1,25 +1,57 @@
 {% extends "base.html"%}
-
+{% load static %}
 {% block header %}
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'car/css/ThirdStyle.css' %}">
 {% endblock %}
 
 {% block body %}
-<h1>request form</h1>
-<form action="" method="post"  enctype="multipart/form-data" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }} 
-    <input type="submit">
-</form>
-{{ form.media }}
+
+
+<!-- <section class="appointment-area ptb-100">
+    <div class="container">
+        <div class="appointment-here-form">-->
+            <h2>بیمه زندگی و تجارت</h2>
+            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+            <!-- <form> 
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6"> -->
+                    
+                            <!-- {{form.vehicle_type}} -->
+                    
+                    <!-- </div>
+                    <div class="col-lg-3 col-sm-6">
+                         -->
+                            {{form.car_type_name}}
+                    
+                    <!-- </div>
+                </div>
+            </form> -->
+       <!--  </div>
+    </div> -->
+
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p>             <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
+<!-- </section> -->
+
+
+
 
 {% endblock %}
 
 {% block footer %}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-    $(function(){
-     $("#id_car_type_name").select2();
+    $(function () {
+        $("#id_car_type_name").select2();
     });
-    </script>
+</script>
 {% endblock%}

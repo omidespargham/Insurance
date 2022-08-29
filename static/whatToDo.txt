@@ -1,2 +1,0 @@
-toye app car too forms bia choice field ro dorost kon
-select2 django ro ok kon.
