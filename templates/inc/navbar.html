@@ -3,7 +3,7 @@
 
 
   <div class="nav-area nev-style-two">
-    <div class="navbar-area is-sticky">
+    <div class="navbar-area">
       <!-- phone platform navbar  -->
       <div class="mobile-nav">
         <a href="{% url 'home:home' %}" class="logo">
@@ -140,18 +140,22 @@
           <div class="sidebar-modal-widget">
             <h3 class="title">پیوندهای اضافی</h3>
             <ul>
+              {%if user.is_authenticated%}
               <li>
-                <a href="log-in.html">وارد شوید</a>
+                <a href="{% url 'accounts:user_logout' %}">خروج</a>
+              </li>
+              {% else%}
+              <li>
+                <a href="{% url 'accounts:user_login' %}">وارد شوید</a>
               </li>
               <li>
-                <a href="sign-in.html">ثبت نام</a>
+                <a href="{%url 'accounts:user_register' %}">ثبت نام</a>
               </li>
-              <li>
-                <a href="faq.html">سوالات متداول</a>
-              </li>
-              <li>
-                <a href="#">خروج</a>
-              </li>
+
+              {% endif%}
+
+
+
             </ul>
           </div>
           <div class="sidebar-modal-widget">

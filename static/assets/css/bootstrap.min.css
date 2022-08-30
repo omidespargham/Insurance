@@ -4912,7 +4912,6 @@ input[type=submit].btn-block {
         flex-flow: row nowrap;
         -ms-flex-pack: start;
         justify-content: flex-start;
-        background-color: #002752
     }
 
     .navbar-expand-md .navbar-nav {

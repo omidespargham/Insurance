@@ -8,39 +8,32 @@
 {% block body %}
 
 
-<!-- <section class="appointment-area ptb-100">
+<section class="appointment-area ptb-100">
     <div class="container">
-        <div class="appointment-here-form">-->
+        <div class="appointment-here-form">
             <h2>بیمه زندگی و تجارت</h2>
-            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-            <!-- <form> 
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6"> -->
-                    
-                            <!-- {{form.vehicle_type}} -->
-                    
-                    <!-- </div>
-                    <div class="col-lg-3 col-sm-6">
-                         -->
-                            {{form.car_type_name}}
-                    
-                    <!-- </div>
-                </div>
-            </form> -->
-       <!--  </div>
-    </div> -->
+            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p>
 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p>             <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-    <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p> 
-<!-- </section> -->
+            <form>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        {{form.vehicle_type}}
+                    </div>
+                    <div class="col-lg-3 col-sm-6" style="padding-top: 20px;">
+                        {{form.car_type_name}}
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        {{form.used}}
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        {{form.year_of_manufacture}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
 
 
 
@@ -48,10 +41,30 @@
 {% endblock %}
 
 {% block footer %}
+<h1>omid ooterr</h1>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(function () {
         $("#id_car_type_name").select2();
+        if ($(this).scrollTop() >150){  
+			$('.navbar-area').addClass("is-sticky");
+		
+		}
+		else{
+			$('.navbar-area').addClass("is-sticky");
+
+		}
     });
+
+    $(window).on('scroll', function() {
+		if ($(this).scrollTop() >150){  
+			$('.navbar-area').addClass("is-sticky");
+		
+		}
+		else{
+			$('.navbar-area').addClass("is-sticky");
+
+		}
+	});
 </script>
 {% endblock%}

@@ -6,7 +6,7 @@ from car import forms_choices
 class ThirdPartyForm(forms.Form):
     vehicle_type = forms.ChoiceField(choices=forms_choices.vehicle_type_chooses,widget=forms.Select(attrs={"class":"form-control","placeholder":"گروه وسیله نقلیه"}))  # گروه وسیله نقلیه
     # if you change car_type_name change the script #id too 
-    car_type_name = forms.ChoiceField(choices=forms_choices.car_type_name)  # نوع خودرو
+    car_type_name = forms.ChoiceField(choices=forms_choices.car_type_name,widget=forms.Select(attrs={"class":"form-control","placeholder":"نوع خودرو"}))  # نوع خودرو
 
     used = forms.ChoiceField(
         choices=forms_choices.used_chooses,

@@ -1,4 +1,5 @@
-/* .nice-select {
+.nice-select {
+  display: none;
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
   border-radius: 5px;
@@ -6,7 +7,7 @@
   box-sizing: border-box;
   clear: both;
   cursor: pointer;
-  display: block;
+  /* display: block; */
   float: right;
   font-family: inherit;
   font-size: 14px;
@@ -135,4 +136,4 @@
   display: none; }
 
 .no-csspointerevents .nice-select.open .list {
-  display: block; } */
+  display: block; }
