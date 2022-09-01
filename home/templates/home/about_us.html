@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% load static %}
+{% block header %}
+{% endblock %}
+
+{% block body %}
+<h1 style="padding: 200px;"> این قسمت با اظلاعات شما پر خواهد شد</h1>
+{% endblock %}
+
+{% block footer %}
+<script>
+
+    $('.navbar-area').addClass("is-sticky");
+    $(window).on('scroll', function() {
+		if ($(this).scrollTop() >150){
+			$('.navbar-area').addClass("is-sticky");
+
+		}
+		else{
+			$('.navbar-area').addClass("is-sticky");
+		}
+	});
+</script>
+{% endblock%}

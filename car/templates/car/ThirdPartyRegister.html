@@ -3,6 +3,14 @@
 {% block header %}
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="{% static 'car/css/ThirdStyle.css' %}">
+<style>
+    .coveritem{
+        padding: 20px 10px;
+    }
+    .coveritem label {
+        padding-left: 100px;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
@@ -11,26 +19,114 @@
 <section class="appointment-area ptb-100">
     <div class="container">
         <div class="appointment-here-form">
-            <h2>بیمه زندگی و تجارت</h2>
-            <p>سفارشی برای پاسخگویی به نیازهای خاص تجاری شما</p>
+            <h2>فرم بیمه شخص ثالث</h2>
+            <p>لطفا فرم را با دقت پر کنید</p>
 
-            <form>
+            <form action="" method="post" novalidate enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
+                    {% csrf_token %}
+
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.vehicle_type.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                        {% endif %}
+                        <label for="id_vehicle_type">گروه وسیله نقلیه :</label>
                         {{form.vehicle_type}}
                     </div>
-                    <div class="col-lg-3 col-sm-6" style="padding-top: 20px;">
-                        {{form.car_type_name}}
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.used.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                    {% endif %}
+                        <label for="id_vehicle_type">نوع خودرو :</label>
                         {{form.used}}
                     </div>
-                    <div class="col-lg-3 col-sm-6">
+
+
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.year_of_manufacture.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                    {% endif %}
+                        <label for="id_vehicle_type">سال ساخت خودرو :</label>
                         {{form.year_of_manufacture}}
                     </div>
-                </div>
-            </form>
-        </div>
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.third_discount.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                    {% endif %}
+                        <label for="id_vehicle_type">درصد تخفیف  مندرج برگه شخص ثالث :</label>
+                        {{form.third_discount}}
+                    </div>
+
+
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.accident_discounts.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                    {% endif %}
+                        <label for="id_vehicle_type">درصد تخفیف بیمه حوادث :</label>
+                        {{form.accident_discounts}}
+                    </div>
+
+
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.number_of_accidents.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                    {% endif %}
+                        <label for="id_vehicle_type">سوابق خسارت بیمه شخص ثالث :</label>
+                        {{form.number_of_accidents}}
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.number_of_incidents.errors %}
+                        <span style="color: red;">موردی انتخاب نشده</span>
+                    {% endif %}
+                        <label for="id_vehicle_type">سوابق خسارت بیمه حوادث راننده :</label>
+                        {{form.number_of_incidents}}
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 coveritem" style="padding-top: 40px;">
+                        {% if form.car_type_name.errors %}
+                            <span style="color: red;">لطفا مدل خودرو را جستجو کنید</span>
+                        {% endif %}
+
+                        <label for="id_vehicle_type">مدل خودرو :</label>
+                        {{form.car_type_name}}
+                    </div>
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.face_image.errors %}
+                        <span style="color: red;">عکس را ارسال کنید</span>
+                        {% endif %}
+                        <label for="id_vehicle_type">تصویر روی کارت ماشن :</label>
+                        {{form.face_image}}
+                    </div>
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.back_image.errors %}
+                        <span style="color: red;">عکس را ارسال کنید</span>
+                        {% endif %}
+                        <label for="id_vehicle_type">تصویر پشت کارت ماشن :</label>
+                        {{form.back_image}}
+                    </div>
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        {% if form.image_insurance_policy.errors %}
+                        <span style="color: red;">عکس را ارسال کنید</span>
+                        {% endif %}
+                        <label for="id_vehicle_type">تصویر بیمه نامه قبلی :</label>
+                        {{form.image_insurance_policy}}
+                    </div>
+                    
+                    <div class="col-lg-4 col-sm-6 coveritem">
+                        <!-- {% if form.car_type_name.errors %}
+                        <span style="color: red;">لطفا مدل خودرو را جستجو کنید</span>
+                        {% endif %}
+                        <label for="id_vehicle_type">تاریخ انقضا بیمه نامه :</label>
+                        {{form.expiration_date}} -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <button type="submit" class="default-btn btn-five">ارسال
+                            کن</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
     </div>
 
 </section>
@@ -41,21 +137,12 @@
 {% endblock %}
 
 {% block footer %}
-<h1>omid ooterr</h1>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(function () {
         $("#id_car_type_name").select2();
-        if ($(this).scrollTop() >150){  
-			$('.navbar-area').addClass("is-sticky");
-		
-		}
-		else{
-			$('.navbar-area').addClass("is-sticky");
-
-		}
     });
-
+    $('.navbar-area').addClass("is-sticky");
     $(window).on('scroll', function() {
 		if ($(this).scrollTop() >150){  
 			$('.navbar-area').addClass("is-sticky");

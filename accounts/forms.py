@@ -5,11 +5,12 @@ from django.core.validators import MaxLengthValidator, MinLengthValidator
 
 
 class UserRegisterForm(forms.Form):
-    full_name = forms.CharField()
+    full_name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder":"نام و نام خانوادگی"}))
     phone_number = forms.CharField(
-        validators=[MaxLengthValidator(11), MinLengthValidator(11)])
+        validators=[MaxLengthValidator(11), MinLengthValidator(11)]
+        ,widget=forms.TextInput(attrs={"class":"form-control","placeholder":"شماره تلفن"}))
     # email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"گذرواژه"}))
 
     def clean_phone_number(self):
         phone = self.cleaned_data["phone_number"]
@@ -17,7 +18,7 @@ class UserRegisterForm(forms.Form):
         user = User.objects.filter(phone_number=phone)
         rgs = RGScode.objects.filter(phone_number=phone)
         if user:
-            raise forms.ValidationError("karbar ba in phone voojood darad !")
+            raise forms.ValidationError("کاربر با این تلفن همراه وجود دارد. لطفا وارد شوید")
         if rgs:
             rgs.delete()
         return phone
@@ -37,8 +38,8 @@ class UserRegisterVerifyForm(forms.Form):
 
 class UserLogInForm(forms.Form):
     phone_number = forms.CharField(
-        validators=[MaxLengthValidator(11), MinLengthValidator(11)])
-    password = forms.CharField(widget=forms.PasswordInput)
+        validators=[MaxLengthValidator(11), MinLengthValidator(11)],widget=forms.TextInput(attrs={"class":"form-control","placeholder":"شماره تلفن"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"گذرواژه"}))
 
 
 # there are for User Model implementatioon

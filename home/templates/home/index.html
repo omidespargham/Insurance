@@ -10,13 +10,13 @@
                                         <div class="container">
                                                 <div class="slider-text one">
                                                         <span>بیمه عمر</span>
-                                                        <h1>بیمه تجارت متناسب با نیازهای شما</h1>
+                                                        <h1>بیمه سامان متناسب با نیازهای شما</h1>
                                                         <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم
                                                                 ایپسوم استاندارد صنعت بوده است. لورم ایپسوم
                                                                 ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
                                                                 استاندارد صنعت بوده است.</p>
                                                         <div class="slider-btn">
-                                                                <a class="default-btn" href="contact.html">
+                                                                <a class="default-btn" href="{% url 'home:contact_us' %}">
                                                                         تماس با ما
                                                                 </a>
                                                         </div>
@@ -37,7 +37,7 @@
                                                                 ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
                                                                 استاندارد صنعت بوده است.</p>
                                                         <div class="slider-btn">
-                                                                <a class="default-btn" href="contact.html">
+                                                                <a class="default-btn" href="{% url 'home:contact_us' %}">
                                                                         تماس با ما
                                                                 </a>
                                                         </div>
@@ -62,7 +62,7 @@
       <div class="col-lg-3 col-sm-6">
         <div class="single-choose wow fadeInUp" data-wow-delay=".2s">
           <span class="flaticon-car-insurance"></span>
-          <h3>شرکت قابل اعتماد</h3>
+          <h3>بیمه شخص ثالث</h3>
           <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
             صنعت بوده است.</p>
           <a href="{% url 'car:register' %}">
@@ -73,10 +73,10 @@
       <div class="col-lg-3 col-sm-6">
         <div class="single-choose wow fadeInUp" data-wow-delay=".3s">
           <span class="flaticon-money"></span>
-          <h3>تضمین بازگشت پول</h3>
+          <h3>بیمه آتش سوزی</h3>
           <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
             صنعت بوده است.</p>
-          <a href="insurance-details.html">
+          <a href="#">
             <i class="flaticon-left"></i>
           </a>
         </div>
@@ -84,10 +84,10 @@
       <div class="col-lg-3 col-sm-6">
         <div class="single-choose wow fadeInUp" data-wow-delay=".4s">
           <span class="flaticon-support"></span>
-          <h3>پشتیبانی عالی</h3>
+          <h3>بیمه عمر</h3>
           <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
             صنعت بوده است.</p>
-          <a href="insurance-details.html">
+          <a href="#">
             <i class="flaticon-left"></i>
           </a>
         </div>
@@ -95,10 +95,10 @@
       <div class="col-lg-3 col-sm-6">
         <div class="single-choose wow fadeInUp" data-wow-delay=".5s">
           <span class="flaticon-contract"></span>
-          <h3>لغو در هر زمان</h3>
+          <h3>بیمه مسافرتی</h3>
           <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
             صنعت بوده است.</p>
-          <a href="insurance-details.html">
+          <a href="#">
             <i class="flaticon-left"></i>
           </a>
         </div>
@@ -192,7 +192,7 @@
                                                   </div>
                                           </div>
                                   </div>
-                                  <a href="about.html" class="default-btn">
+                                  <a href="{% url 'home:about_us' %}" class="default-btn">
                                           جزئیات را بدانید
                                   </a>
                           </div>

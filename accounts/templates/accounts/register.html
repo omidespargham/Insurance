@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
 {% endblock %}
 {% block body %}
-<div class="full_container">
+<!-- <div class="full_container">
     <div class="center">
         <form action="" method="post" style="padding: 5px 40px 20px 40px ;" novalidate>
             {% csrf_token %}
@@ -14,13 +14,13 @@
                 <span></span>
                 <label>Phone Number</label>
             </div>
-            <!-- {{form.email.errors}}
+            {{form.email.errors}}
         <div class="txt_field">
             {{form.email}}
             <span></span>
             <label>Email</label>
         </div> -->
-            {{form.full_name.errors}}
+            <!-- {{form.full_name.errors}}
             <div class="txt_field">
                 {{form.full_name}}
                 <span></span>
@@ -28,7 +28,7 @@
             </div>
             {{form.password.errors}}
             <div class="txt_field">
-                <!-- <input type="password" required> -->
+                <input type="password" required> 
                 {{form.password}}
                 <span></span>
                 <label>Password</label>
@@ -36,5 +36,114 @@
             <input type="submit" value="Register">
         </form>
     </div>
-</div>
+</div>  -->
+
+
+
+
+
+<section class="user-area-all-style log-in-area ptb-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="contact-form-action">
+            <div class="form-heading text-center">
+              <h3 class="form-title">در بیمه دون ثبت نام کنید</h3>
+            </div>
+            <form form action="" method="post" novalidate>
+              {% csrf_token%}
+              <div class="row">
+
+                <div class="col-12">
+                    {% if form.full_name.errors %}
+                    <span style="color: red;">این قسمت نمیتواند خالی باشد</span>
+                    {% endif %}
+                    <div class="form-group">
+                      {{form.full_name}}
+                    </div>
+                  </div>
+
+                <div class="col-12">
+                  {% if form.phone_number.errors %}
+                  <span style="color: red;">شماره تلفن اشتباه است </span>
+                  {% endif %}
+                  <div class="form-group">
+                    {{form.phone_number}}
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  {% if form.password.errors %}
+                  <span style="color: red;">پسورد اشتباه است </span>
+                  {% endif %}
+                  <div class="form-group">
+                    {{form.password}}
+                  </div>
+                </div>
+  
+                <!-- <div class="col-lg-6 col-sm-6 form-condition">
+                  <p class="">
+                    <a class="" href="#">فراموشی
+                      گذرواژه؟</a>
+                  </p>
+                </div> -->
+                <!-- <div class="col-lg-6 col-sm-6 form-condition">
+                  <p class="">
+                    عضو نیستی؟
+                    <a
+                      href="{% url 'accounts:user_register' %}{% if request.next %}?next={{request.next}} {% endif %}">عضویت</a>
+                  </p>
+                </div> -->
+  
+                <!-- <div class="col-lg-6 col-sm-6 form-condition">
+                  <div class="agree-label">
+                    <input type="checkbox" id="chb1">
+                    <label for="chb1">
+                      مرا بخاطر بسپار
+                    </label>
+                    <p class="">
+                      <a class="" href="#">فراموشی
+                        گذرواژه؟</a>
+                    </p>
+                  </div>
+                </div> -->
+  
+  
+                <div class="col-12">
+                  <button class="default-btn btn-two" type="submit">
+                    ثبت نام
+                  </button>
+                </div>
+  
+  
+  
+                <div class="col-12">
+                  <p class="account-desc">
+                    حساب کاربری داری ؟
+                    <a
+                      href="{% url 'accounts:user_login' %}{% if request.next %}?next={{request.next}} {% endif %}">ورود</a>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% block footer %}
+<script>
+    $('.navbar-area').addClass("is-sticky");
+    $(window).on('scroll', function() {
+		if ($(this).scrollTop() >150){  
+			$('.navbar-area').addClass("is-sticky");
+		
+		}
+		else{
+			$('.navbar-area').addClass("is-sticky");
+
+		}
+	});
+</script>
+{% endblock%}
 {% endblock %}
