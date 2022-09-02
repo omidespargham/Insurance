@@ -167,6 +167,7 @@ ul {
 }
 
 .form-control {
+  text-align: center;
   height: 50px;
   color: #262566;
   border: 1px solid #ced4da19;
