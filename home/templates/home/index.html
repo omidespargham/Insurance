@@ -1,208 +1,183 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block body%}
+{% block body %}
 
-<section class="hero-slider-area">
+    <section class="hero-slider-area">
         <div class="hero-slider-wrap owl-carousel owl-theme">
-                <div class="slider-item slider-item-bg-3">
-                        <div class="d-table">
-                                <div class="d-table-cell">
-                                        <div class="container">
-                                                <div class="slider-text one">
-                                                        <span>بیمه عمر</span>
-                                                        <h1>بیمه سامان متناسب با نیازهای شما</h1>
-                                                        <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم
-                                                                ایپسوم استاندارد صنعت بوده است. لورم ایپسوم
-                                                                ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
-                                                                استاندارد صنعت بوده است.</p>
-                                                        <div class="slider-btn">
-                                                                <a class="default-btn" href="{% url 'home:contact_us' %}">
-                                                                        تماس با ما
-                                                                </a>
-                                                        </div>
-                                                </div>
-                                        </div>
+            <div class="slider-item slider-item-bg-3">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="slider-text one">
+                                <span>بیمه عمر</span>
+                                <h1>بیمه سامان متناسب با نیازهای شما</h1>
+                                <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم
+                                    ایپسوم استاندارد صنعت بوده است. لورم ایپسوم
+                                    ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
+                                    استاندارد صنعت بوده است.</p>
+                                <div class="slider-btn">
+                                    <a class="default-btn" href="{% url 'home:contact_us' %}">
+                                        تماس با ما
+                                    </a>
                                 </div>
+                            </div>
                         </div>
+                    </div>
                 </div>
-                <div class="slider-item slider-item-bg-4">
-                        <div class="d-table">
-                                <div class="d-table-cell">
-                                        <div class="container">
-                                                <div class="slider-text two">
-                                                        <span>بیمه عمر</span>
-                                                        <h1>بیمه تجارت متناسب با نیازهای شما</h1>
-                                                        <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم
-                                                                ایپسوم استاندارد صنعت بوده است. لورم ایپسوم
-                                                                ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
-                                                                استاندارد صنعت بوده است.</p>
-                                                        <div class="slider-btn">
-                                                                <a class="default-btn" href="{% url 'home:contact_us' %}">
-                                                                        تماس با ما
-                                                                </a>
-                                                        </div>
-                                                </div>
-                                        </div>
+            </div>
+            <div class="slider-item slider-item-bg-4">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="slider-text two">
+                                <span>بیمه عمر</span>
+                                <h1>بیمه تجارت متناسب با نیازهای شما</h1>
+                                <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم
+                                    ایپسوم استاندارد صنعت بوده است. لورم ایپسوم
+                                    ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم
+                                    استاندارد صنعت بوده است.</p>
+                                <div class="slider-btn">
+                                    <a class="default-btn" href="{% url 'home:contact_us' %}">
+                                        تماس با ما
+                                    </a>
                                 </div>
+                            </div>
                         </div>
+                    </div>
                 </div>
+            </div>
         </div>
-</section>
+    </section>
 
-<section class="choose-us-area choose-us-area-two pt-100 pb-70">
-  <div class="container">
-    <div class="section-title">
-      <!-- <span>امکانات ما</span> -->
-      <h2>ما شرکت برنده جایزه هستیم</h2>
-      <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده است.
-        لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده
-        است.</p>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <div class="single-choose wow fadeInUp" data-wow-delay=".2s">
-          <span class="flaticon-car-insurance"></span>
-          <h3>بیمه شخص ثالث</h3>
-          <p>{{"بیمه شخص ثالث بیمه ایران راه حلی مطمئن برای جبران خسارت های مالی و جانی ناشی از وسیله نقلیه ، با گستردگی خدمات پس از فروش به وسعت ایران ، نقد و اقساط ، پرداخت خسارت سیار ، تسویه خسارت های جانی در کوتاه ترین زمان ،  ارائه تخفیف تا سقف هفتاد درصد"|truncatechars:130}}</p>
-          <a href="{% url 'car:register' %}">
-            <i class="flaticon-left"></i>
-          </a>
+    <section class="choose-us-area choose-us-area-two pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <!-- <span>امکانات ما</span> -->
+                <h2>همین الان ثبت نام رو شروع کن :)</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-choose wow fadeInUp" data-wow-delay=".2s">
+                        <span class="flaticon-car-insurance"></span>
+                        <h3>بیمه شخص ثالث</h3>
+                        <p>{{ "بیمه شخص ثالث بیمه ایران راه حلی مطمئن برای جبران خسارت های مالی و جانی ناشی از وسیله نقلیه ، با گستردگی خدمات پس از فروش به وسعت ایران ، نقد و اقساط ، پرداخت خسارت سیار ، تسویه خسارت های جانی در کوتاه ترین زمان ،  ارائه تخفیف تا سقف هفتاد درصد"|truncatechars:130 }}</p>
+                        <a href="{% url 'car:register' %}">
+                            <i class="flaticon-left"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-choose wow fadeInUp" data-wow-delay=".3s">
+                        <span class="flaticon-money"></span>
+                        <h3>بیمه آتش سوزی</h3>
+                        <p>{{ "بیمه آتش سوزی خسارت های ناشی از آتش ، صاعقه و انفجار را جبران میکند . بیمه زلزله ، بیمه سیل ، بیمه سرقت و پوشش های دیگری را میتوان به بیمه آتش سوزی افزود . بیمه آتش سوزی منازل مسکونی ،کارخانه ها ، بیمه آتش سوزی فروشگاه ها وانبارها از مرحله کارشناسی تا دریافت خسارت"|truncatechars:130 }}</p>
+                        <a href="#">
+                            <i class="flaticon-left"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-choose wow fadeInUp" data-wow-delay=".4s">
+                        <span class="flaticon-support"></span>
+                        <h3>بیمه عمر</h3>
+                        <p>{{ "بیمه عمر یکی از راه‌های مطمئن و متداول سرمایه‌گذاری و تامین آتیه در جهان است. شرکت‌های بیمه انواع مختلفی از بیمه‌نامه عمر را ارائه می‌دهند که در ادامه آن‌ها را معرفی می‌کنیم"|truncatechars:130 }}</p>
+                        <a href="#">
+                            <i class="flaticon-left"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-choose wow fadeInUp" data-wow-delay=".5s">
+                        <span class="flaticon-contract"></span>
+                        <h3>بیمه مسافرتی</h3>
+                        <p>{{ "داشتن بیمه مسافرتی آن‌قدر مهم است که به شما توصیه می‌کنیم، اگر پول تهیه بیمه مسافرتی را ندارید، بهتر است سفر خارج از کشور نروید. اگر اهل سفر و ماجراجویی هستید، خرید بیمه مسافرتی دیگر برایتان یک خدمت لوکس و غیرضروری نیست"|truncatechars:130 }}</p>
+                        <a href="#">
+                            <i class="flaticon-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="single-choose wow fadeInUp" data-wow-delay=".3s">
-          <span class="flaticon-money"></span>
-          <h3>بیمه آتش سوزی</h3>
-          <p>{{"بیمه آتش سوزی خسارت های ناشی از آتش ، صاعقه و انفجار را جبران میکند . بیمه زلزله ، بیمه سیل ، بیمه سرقت و پوشش های دیگری را میتوان به بیمه آتش سوزی افزود . بیمه آتش سوزی منازل مسکونی ،کارخانه ها ، بیمه آتش سوزی فروشگاه ها وانبارها از مرحله کارشناسی تا دریافت خسارت"|truncatechars:130}}</p>
-          <a href="#">
-            <i class="flaticon-left"></i>
-          </a>
+    </section>
+
+    <section class="chooses-us-area-two pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <span>ما را انتخاب کنید</span>
+                <h2>تاریخچه شرکت بیمه سامان</h2>
+                <p>
+                    شرکت بیمه سامان در تاریخ 1383/11/27 به منظور ارائه خدمات بیمه های بازرگانی در رشته بیمه‌های اموال،
+                    مسئولیت و اشخاص با سرمایه 200 میلیارد ریالی منقسم به 200 میلیون سهم با ارزش اسمی یک هزار ریالی در
+                    سازمان ثبت شرکتها با شماره ثبت 241059 ثبت شد و در تاریخ 1383/12/11مجوز فعالیت خود را در رشته های
+                    زندگی ، غیر زندگی و بیمه های اتکایی از بیمه مرکزی دریافت نمود و به عنوان ششمین عضو گروه مالی سامان
+                    فعالیت خود را آغاز کرد.
+                </p>
+            </div>
+            <div class="choose-us-wrap">
+                <ul>
+                    <li>
+                        <i class="flaticon-health-care"></i>
+                        <br>
+                        <h3>مشتریان متمرکز شده اند</h3>
+
+                    </li>
+                    <li>
+                        <i class="flaticon-kindness"></i>
+                        <br>
+                        <h3>خلاقیت و نوآوری</h3>
+                    </li>
+                    <li>
+                        <i class="flaticon-support"></i>
+                        <br>
+                        <h3>پشتیبانی 24/7</h3>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="single-choose wow fadeInUp" data-wow-delay=".4s">
-          <span class="flaticon-support"></span>
-          <h3>بیمه عمر</h3>
-          <p>{{"بیمه عمر یکی از راه‌های مطمئن و متداول سرمایه‌گذاری و تامین آتیه در جهان است. شرکت‌های بیمه انواع مختلفی از بیمه‌نامه عمر را ارائه می‌دهند که در ادامه آن‌ها را معرفی می‌کنیم"|truncatechars:130}}</p>
-          <a href="#">
-            <i class="flaticon-left"></i>
-          </a>
+    </section>
+
+
+    <section class="any-contact-area">
+        <div class="container" style="padding: 50px 10px;">
+
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                    <div class="contact-text">
+                        <h3>
+                            اگر که نیاز به راهنمایی داری ، میتونی با کارشناسای ما تماس بگیری
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-call">
+                        <h3>
+                            <i class="flaticon-call"></i>
+                            <a href="tel:+822456974">02112345678</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="single-choose wow fadeInUp" data-wow-delay=".5s">
-          <span class="flaticon-contract"></span>
-          <h3>بیمه مسافرتی</h3>
-          <p>{{"داشتن بیمه مسافرتی آن‌قدر مهم است که به شما توصیه می‌کنیم، اگر پول تهیه بیمه مسافرتی را ندارید، بهتر است سفر خارج از کشور نروید. اگر اهل سفر و ماجراجویی هستید، خرید بیمه مسافرتی دیگر برایتان یک خدمت لوکس و غیرضروری نیست"|truncatechars:130}}</p>
-          <a href="#">
-            <i class="flaticon-left"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="chooses-us-area-two pt-100 pb-70">
-  <div class="container">
-          <div class="section-title">
-                  <span>ما را انتخاب کنید</span>
-                  <h2>چرا ما را انتخاب کنید</h2>
-                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد صنعت بوده است.
-                          لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.</p>
-          </div>
-          <div class="choose-us-wrap">
-                  <ul>
-                          <li>
-                                  <i class="flaticon-health-care"></i>
-                                  <h3>مشتریان متمرکز شده اند</h3>
-                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
-                                          صنعت بوده است.</p>
-                          </li>
-                          <li>
-                                  <i class="flaticon-kindness"></i>
-                                  <h3>خدمات با عشق</h3>
-                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
-                                          صنعت بوده است.</p>
-                          </li>
-                          <li>
-                                  <i class="flaticon-support"></i>
-                                  <h3>پشتیبانی 24/7</h3>
-                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
-                                          صنعت بوده است.</p>
-                          </li>
-                  </ul>
-          </div>
-  </div>
-</section>
+{#    <section class="about-area ptb-100">#}
+{#        <div class="container">#}
+{#            <div class="row align-items-center">#}
+{#                <div class="col-lg-6 col-md-6">#}
+{#                    <div class="about-content">#}
+{##}
+{#                        <div class="about-list">#}
+{#                            <div class="row">#}
+{#                                <div class="col-lg-6">#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#    </section>#}
 
-
-<section class="any-contact-area">
-  <div class="container" style="padding-top: 50px;">
-          <div class="row">
-                  <div class="col-lg-8 col-md-6">
-                          <div class="contact-text">
-                                  <h3>آیا سوالی دارید؟ هر چیزی را از ما بخواهید ، ما دوست داریم پاسخ دهیم!
-                                  </h3>
-                          </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                          <div class="contact-call">
-                                  <h3>
-                                          <i class="flaticon-call"></i>
-                                          <a href="tel:+822456974">02112345678</a>
-                                  </h3>
-                          </div>
-                  </div>
-          </div>
-  </div>
-</section>
-
-<section class="about-area ptb-100">
-  <div class="container">
-          <div class="row align-items-center">
-                  <div class="col-lg-6 col-md-6">
-                          <div class="about-content">
-                                  <span>درباره ما</span>
-                                  <h2>بیمه همیشه آماده است تا از زندگی و تجارت خود محافظت کند</h2>
-                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
-                                          صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.
-                                  </p>
-                                  <p>لورم ایپسوم ساختار چاپ و متن را در بر می گیرد. لورم ایپسوم استاندارد
-                                          صنعت بوده است. لورم ایپسوم ساختار چاپ و متن را در بر می گیرد.
-                                          لورم ایپسوم استاندارد صنعت بوده است. لورم ایپسوم ساختار چاپ و
-                                          متن را در بر می گیرد.</p>
-                                  <div class="about-list">
-                                          <div class="row">
-                                                  <div class="col-lg-6">
-                                                          <div class="about-single-list list-2">
-                                                                  <i class="flaticon-social-care-1"></i>
-                                                                  <span>مشتری را زیر پوشش می دهیم</span>
-                                                          </div>
-                                                  </div>
-                                                  <div class="col-lg-6">
-                                                          <div class="about-single-list">
-                                                                  <i class="flaticon-target"></i>
-                                                                  <span>100+ مشارکت جامعه در راه حل</span>
-                                                          </div>
-                                                  </div>
-                                          </div>
-                                  </div>
-                                  <a href="{% url 'home:about_us' %}" class="default-btn">
-                                          جزئیات را بدانید
-                                  </a>
-                          </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6">
-                          <div class="about-img-3 wow fadeInRight" data-wow-delay=".2s">
-                                  <img src="{% static 'assets/img/about-img-3.jpg' %}" alt="Image">
-                                  <div class="about-img-2">
-                                          <img src="{% static 'assets/img/about-img-2.jpg' %}" alt="Image">
-                                  </div>
-                          </div>
-                  </div>
-          </div>
-  </div>
-</section>
-
-{% endblock%}
+{% endblock %}
