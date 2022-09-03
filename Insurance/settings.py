@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-4y+c--feli76m&%ez@ikprq(#x+e6$w9(5orompu%jh!mffo8z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -120,7 +118,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "accounts.authenticate.UserPhoneAuthenticate"
@@ -139,3 +136,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.USER"
+
+# sever config
+ALLOWED_HOSTS = ['www.cmsbime.ir', 'cmsbime.ir']
+STATIC_ROOT = '/home/cmsbimei/public_html/static'  # copy static file to in locations
+STATIC_URL = 'static/'  # copy
+MEDIA_ROOT = '/home/cmsbimei/public_html/media'  # detacted media files
