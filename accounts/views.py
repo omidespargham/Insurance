@@ -32,6 +32,7 @@ class UserRegisterView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
+        
         if form.is_valid():
             cl = form.cleaned_data
             # self.request.session["user_info"] = {
@@ -40,11 +41,9 @@ class UserRegisterView(View):
             #     "full_name": cl["full_name"],
             #     "password": cl["password"]
             # }
-            user = User.objects.create_user(phone_number=cl["phone_number"],
-                                                full_name=cl["full_name"], password=cl["password"])
-            authed_user = authenticate(username=cl["phone_number"],password=cl["password"])
+            authed_user = form.save_authenticate()
             if authed_user:
-                messages.success(request, f"{user.full_name} shoma sabt nam kardid", "success")
+                messages.success(request, "خوش آمدید !", "success")
                 login(request,authed_user)
                 if request.next:
                     return redirect(request.next)

@@ -2,15 +2,34 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django import forms
 from .models import RGScode, User
 from django.core.validators import MaxLengthValidator, MinLengthValidator
+from django.contrib.auth import password_validation
+from django.contrib.auth import authenticate
 
 
+default_messages_errors = {
+"required":"این قسمت نمیتواند خالی باشد."
+}
 class UserRegisterForm(forms.Form):
-    full_name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder":"نام و نام خانوادگی"}))
+    full_name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder":"نام و نام خانوادگی"}),
+                                    error_messages=default_messages_errors)
     phone_number = forms.CharField(
-        validators=[MaxLengthValidator(11), MinLengthValidator(11)]
-        ,widget=forms.TextInput(attrs={"class":"form-control","placeholder":"شماره تلفن"}))
+                                    validators=[MaxLengthValidator(11), MinLengthValidator(11)]
+                                    ,widget=forms.TextInput(attrs={"class":"form-control","placeholder":"شماره تلفن"}),
+                                    error_messages=default_messages_errors)
     # email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"گذرواژه"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"گذرواژه"}),
+                                error_messages=default_messages_errors)
+
+    def clean_password(self):
+        password_validation.validate_password(self.cleaned_data.get("password"),None) # user atribute is known
+        return self.cleaned_data["password"]
+
+    def save_authenticate(self):
+        cl = self.cleaned_data
+        User.objects.create_user(phone_number=cl["phone_number"],
+                                                full_name=cl["full_name"], password=cl["password"])
+        authed_user = authenticate(username=cl["phone_number"],password=cl["password"])
+        return authed_user
 
     def clean_phone_number(self):
         phone = self.cleaned_data["phone_number"]
@@ -38,8 +57,16 @@ class UserRegisterVerifyForm(forms.Form):
 
 class UserLogInForm(forms.Form):
     phone_number = forms.CharField(
-        validators=[MaxLengthValidator(11), MinLengthValidator(11)],widget=forms.TextInput(attrs={"class":"form-control","placeholder":"شماره تلفن"}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"گذرواژه"}))
+                                    validators=[MaxLengthValidator(11,message="شماره مجاز نیست"), MinLengthValidator(11,message="شماره مجاز نیست")],widget=forms.TextInput(attrs={"class":"form-control","placeholder":"شماره تلفن"}),
+                                    error_messages=default_messages_errors)
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"گذرواژه"}),
+                                error_messages=default_messages_errors)
+    
+    def clean_phone_number(self):
+        phone = self.cleaned_data["phone_number"]
+        if not (phone[0] == "0" and phone[1] == "9"):
+            raise forms.ValidationError("شماره تلفن باید با (*******09) شروع شود")
+        return self.cleaned_data["phone_number"]
 
 
 # there are for User Model implementatioon

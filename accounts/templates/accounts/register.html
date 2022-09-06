@@ -56,7 +56,7 @@
 
                 <div class="col-12">
                     {% if form.full_name.errors %}
-                    <span style="color: red;">این قسمت نمیتواند خالی باشد</span>
+                    <span style="color: red;">{{form.full_name.errors}}</span>
                     {% endif %}
                     <div class="form-group">
                       {{form.full_name}}
@@ -65,7 +65,7 @@
 
                 <div class="col-12">
                   {% if form.phone_number.errors %}
-                  <span style="color: red;">شماره تلفن اشتباه است </span>
+                  <span style="color: red;">{{form.phone_number.errors}}</span>
                   {% endif %}
                   <div class="form-group">
                     {{form.phone_number}}
@@ -74,7 +74,7 @@
 
                 <div class="col-12">
                   {% if form.password.errors %}
-                  <span style="color: red;">پسورد اشتباه است </span>
+                  <span style="color: red;">{{form.password.errors}}</span>
                   {% endif %}
                   <div class="form-group">
                     {{form.password}}

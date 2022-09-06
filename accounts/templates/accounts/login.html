@@ -48,7 +48,7 @@
 
               <div class="col-12">
                 {% if form.phone_number.errors %}
-                <span style="color: red;">شماره تلفن یا پسورد اشتباه است </span>
+                <span style="color: red;">{{form.phone_number.errors}} </span>
                 {% endif %}
                 <div class="form-group">
                   {{form.phone_number}}
@@ -56,7 +56,7 @@
               </div>
               <div class="col-12">
                 {% if form.password.errors %}
-                <span style="color: red;">شماره تلفن یا پسورد اشتباه است </span>
+                <span style="color: red;">{{form.password.errors}} </span>
                 {% endif %}
                 <div class="form-group">
                   {{form.password}}

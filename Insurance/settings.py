@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "Individual_incidents.apps.IndividualIncidentsConfig",
     # third party apps
     'django_jalali',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -88,18 +89,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    #{
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 # Internationalization
@@ -137,8 +138,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.USER"
 
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'accounts.custom_password_validations.MinLenght','OPTIONS': {'min_length': 8,}},
+]
+
+# arvan cloud storages
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = "83226d95-0b55-4be8-a553-115c2fc70bab"
+AWS_SECRET_ACCESS_KEY = "f265a900bc32072cef32abe8f84504c696880c69bd3a9f0e8ebd50f3520a3c60"
+AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.com"
+AWS_STORAGE_BUCKET_NAME = "cmsbime"
+AWS_SERVICE_NAME = "s3"
+AWS_S3_FILE_OVERWRITE = False
+AWS_LOCAL_STORAGE = f"{BASE_DIR}/aws/"
+
+
 # sever config
-ALLOWED_HOSTS = ['www.cmsbime.ir', 'cmsbime.ir']
-STATIC_ROOT = '/home/cmsbimei/public_html/static'  # copy static file to in locations
+# ALLOWED_HOSTS = ['www.cmsbime.ir', 'cmsbime.ir']
+ALLOWED_HOSTS = ['*']
+# STATIC_ROOT = '/home/cmsbimei/public_html/static'  # copy static file to in locations
 STATIC_URL = 'static/'  # copy
-MEDIA_ROOT = '/home/cmsbimei/public_html/media'  # detacted media files
+# MEDIA_ROOT = '/home/cmsbimei/public_html/media'  # detacted media files
