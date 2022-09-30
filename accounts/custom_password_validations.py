@@ -1,6 +1,9 @@
 from django.contrib.auth import password_validation
 from django.forms import ValidationError
 from django.utils.translation import ngettext
+
+
+# customize password_validate Class for better message.
 class MinLenght(password_validation.MinimumLengthValidator):
     def get_help_text(self):
         return "گذرواژه شما باید بیشتر از 8 کاراکتر باشد."

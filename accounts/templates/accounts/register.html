@@ -73,6 +73,15 @@
                 </div>
 
                 <div class="col-12">
+                  {% if form.email.errors %}
+                  <span style="color: red;">{{form.email.errors}}</span>
+                  {% endif %}
+                  <div class="form-group">
+                    {{form.email}}
+                  </div>
+                </div>
+
+                <div class="col-12">
                   {% if form.password.errors %}
                   <span style="color: red;">{{form.password.errors}}</span>
                   {% endif %}

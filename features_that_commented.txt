@@ -1,0 +1,17 @@
+UserRegisterView
+
+
+    # def post(self, request):
+    #     form = self.form_class(request.POST)
+
+    #     if form.is_valid():
+    #         authed_user = form.save_authenticate()
+    #         if authed_user:
+    #             messages.success(request, "خوش آمدید !", "success")
+    #             login(request, authed_user)
+    #             if request.next:
+    #                 return redirect(request.next)
+    #             return redirect("home:home")
+    #         return redirect("accounts:user_login")
+    #     return render(request, self.template_name, {"form": form})
+

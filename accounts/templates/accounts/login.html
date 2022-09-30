@@ -47,11 +47,11 @@
             <div class="row">
 
               <div class="col-12">
-                {% if form.phone_number.errors %}
-                <span style="color: red;">{{form.phone_number.errors}} </span>
+                {% if form.phone_or_email.errors %}
+                <span style="color: red;">{{form.phone_or_email.errors}} </span>
                 {% endif %}
                 <div class="form-group">
-                  {{form.phone_number}}
+                  {{form.phone_or_email}}
                 </div>
               </div>
               <div class="col-12">
@@ -63,28 +63,12 @@
                 </div>
               </div>
 
-              <!-- <div class="col-lg-6 col-sm-6 form-condition">
-                <p class="">
-                  <a class="" href="#">فراموشی
-                    گذرواژه؟</a>
-                </p>
-              </div> -->
-              <!-- <div class="col-lg-6 col-sm-6 form-condition">
-                <p class="">
-                  عضو نیستی؟
-                  <a
-                    href="{% url 'accounts:user_register' %}{% if request.next %}?next={{request.next}} {% endif %}">عضویت</a>
-                </p>
-              </div> -->
 
               <div class="col-lg-6 col-sm-6 form-condition">
                 <div class="agree-label">
-                  <!-- <input type="checkbox" id="chb1">
-                  <label for="chb1">
-                    مرا بخاطر بسپار
-                  </label> -->
+
                   <p class="">
-                    <a class="" href="#">فراموشی
+                    <a class="" href="{% url 'accounts:reset_password' %}">فراموشی
                       گذرواژه؟</a>
                   </p>
                 </div>

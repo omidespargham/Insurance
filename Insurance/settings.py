@@ -75,36 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Insurance.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    # },
-    #{
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-]
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -114,25 +84,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
-
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "accounts.authenticate.UserPhoneAuthenticate"
-]
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -141,6 +92,34 @@ AUTH_USER_MODEL = "accounts.USER"
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'accounts.custom_password_validations.MinLenght','OPTIONS': {'min_length': 8,}},
 ]
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "accounts.authenticate.UserPhoneAuthenticate",
+    "accounts.authenticate.UserEmailAuthenticate",
+]
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "BIMEDB",
+        'USER': "postgres",
+        'PASSWORD': ".",
+        'HOST': "localhost",
+        'PORT': "5432",
+    }
+}
+
+
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # arvan cloud storages
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -153,9 +132,17 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_LOCAL_STORAGE = f"{BASE_DIR}/aws/"
 
 
+# email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'omidespargham2001@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = "uevvhqvxppegpyqv"
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'app bime'
+
 # sever config
 # ALLOWED_HOSTS = ['www.cmsbime.ir', 'cmsbime.ir']
 ALLOWED_HOSTS = ['*']
 # STATIC_ROOT = '/home/cmsbimei/public_html/static'  # copy static file to in locations
-STATIC_URL = 'static/'  # copy
 # MEDIA_ROOT = '/home/cmsbimei/public_html/media'  # detacted media files

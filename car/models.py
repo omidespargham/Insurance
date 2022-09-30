@@ -22,7 +22,3 @@ class ThirdPartyModel(models.Model):  # مدل شخص ثالث
     def __str__(self):
         return f"{self.user.full_name} - {self.car_type_name}"
 
-
-# class CarCategory(models.Model):
-#     name = models.CharField(max_length=100)
-#     car_type = models.CharField(max_length=100)

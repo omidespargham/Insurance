@@ -4,35 +4,60 @@
 <link rel="stylesheet" href="{% static 'accounts/css/profile_style.css' %}">{% endblock %}
 {% block body %}
 
-<div class="wrapper">
-    <div class="wrapper-border">
-        <div class="left">
-            <img src="{{user.profile.img.url}}" alt="user" width="200"/>
-            <h4>{{user.full_name}}</h4>
-            <!-- <p>UI Developer</p> -->
-        </div>
-        <div class="right">
-            <div class="info">
-                <h3>Information</h3>
-                <div class="info_data">
-                    <div class="data">
-                        <h4>Email</h4>
-                        <p>{{user.email}}</p>
+<section class="user-area-all-style log-in-area ptb-100">
+    <div class="container">
+        <div class="wrapper">
+            <div class="wrapper-border">
+                <div class="left">
+                    <img src="{{user.profile.img.url}}" alt="user" width="200" />
+                    <h4>{{user.full_name}}</h4>
+                    <!-- <p>UI Developer</p> -->
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Information</h3>
+                        <div class="info_data">
+                            <div class="data">
+                                <h4>ایمیل</h4>
+                                <p>{{user.email}}</p>
+                            </div>
+                            <div class="data">
+                                <h4>شماره</h4>
+                                <p>{{user.phone_number}}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="data">
-                        <h4>Phone</h4>
-                        <p>{{user.phone_number}}</p>
+
+
+                    <div class="social_media">
+                        <ul>
+                            <a href="{% url 'accounts:user_profile_edit' %}" class="btn"
+                                style="background-color: #31abfc;margin-left: 5px;">
+                                تغییر پروفایل</a>
+                            <a href="{% url 'accounts:reset_password' %}" class="btn"
+                                style="background-color: #31abfc;">
+                                تغییر گذرواژه</a>
+                        </ul>
+
                     </div>
                 </div>
             </div>
-
-
-            <div class="social_media">
-                <ul>
-                    <a href="{% url 'accounts:user_profile_edit' %}" class="btn btn-info">Edit</a>
-                </ul>
-            </div>
         </div>
     </div>
-</div>
+</section>
+{% block footer %}
+<script>
+    $('.navbar-area').addClass("is-sticky");
+    $(window).on('scroll', function () {
+        if ($(this).scrollTop() > 150) {
+            $('.navbar-area').addClass("is-sticky");
+
+        }
+        else {
+            $('.navbar-area').addClass("is-sticky");
+
+        }
+    });
+</script>
+{% endblock%}
 {% endblock %}

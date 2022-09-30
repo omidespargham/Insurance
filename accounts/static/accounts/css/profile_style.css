@@ -22,7 +22,7 @@
 }
 .wrapper .left{
   width: 50%;
-  background: linear-gradient(to right,#01a9ac,#01dbdf);
+  background: linear-gradient(to right,#0a58ca,#31abfc);
   padding: 30px 25px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -99,7 +99,7 @@
 .wrapper .social_media ul li{
   width: 45px;
   height: 45px;
-  background: linear-gradient(to right,#01a9ac,#01dbdf);
+  background: linear-gradient(to right,#0a58ca,#31abfc);
   margin-right: 10px;
   border-radius: 5px;
   text-align: center;

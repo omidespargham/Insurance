@@ -3,22 +3,62 @@
 {% block header %}
 <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">{% endblock %}
 {% block body %}
-<!-- <form action="" method="get" novalidate>
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="verify">
-</form> -->
 
-<div class="center">
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="txt_field">
-            {{form.code}}
-            <span></span>
-            <label>Verify Code</label>
+<section class="user-area-all-style log-in-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form-action">
+                    <div class="form-heading text-center">
+                        <h4 class="form-title">لطفا کد ارسالی به شماره تلفن را وارد کنید</h4>
+                    </div>
+                    <form form action="" method="post" novalidate>
+                        {% csrf_token%}
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                {% if form.code.errors %}
+                                <span style="color: red;">{{form.code.errors}} </span>
+                                {% endif %}
+                                {% if is_not_true_code %}
+                                <span style="color: red;">کد درست نمیباشد </span>
+                                {% endif %}
+                                <div class="form-group">
+                                    {{form.code}}
+                                </div>
+                            </div>
+                            <div class="col-3"></div>
+                            <div class="col-12">
+                                <button class="default-btn btn-two" type="submit">
+                                    ثبت
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!-- <div class="pass">Forgot Password?</div> -->
-        <input type="submit" value="Register">
-    </form>
-</div>
+    </div>
+</section>
+
+
+
+
+
+
+{% block footer %}
+<script>
+    $('.navbar-area').addClass("is-sticky");
+    $(window).on('scroll', function () {
+        if ($(this).scrollTop() > 150) {
+            $('.navbar-area').addClass("is-sticky");
+
+        }
+        else {
+            $('.navbar-area').addClass("is-sticky");
+
+        }
+    });
+</script>
+{% endblock%}
 {% endblock %}

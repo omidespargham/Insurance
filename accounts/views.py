@@ -1,14 +1,13 @@
-import email
 from random import randint
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout, login, authenticate
 from django.views import View
 from django.contrib import messages
-from accounts.forms import UserLogInForm, UserRegisterForm, UserRegisterVerifyForm
+from accounts.forms import UserLogInForm, UserRegisterForm, UserProfileEditForm, UserRegisterVerifyForm
 from accounts.models import RGScode
 from .models import User
-# from utils import send_rgs_code
+from API_SMS import sms
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
 
@@ -19,7 +18,8 @@ class UserRegisterView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            messages.success(request, f"برای ثبت حساب جدید ابتدا از حساب خود خارج شوید", "warning")
+            messages.success(
+                request, f"برای ثبت حساب جدید ابتدا از حساب خود خارج شوید", "warning")
             return redirect("home:home")
         request.next = request.GET.get("next")
         return super().dispatch(request, *args, **kwargs)
@@ -32,31 +32,21 @@ class UserRegisterView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        
         if form.is_valid():
             cl = form.cleaned_data
-            # self.request.session["user_info"] = {
-            #     "phone_number": cl["phone_number"],
-            #     "email": cl["email"],
-            #     "full_name": cl["full_name"],
-            #     "password": cl["password"]
-            # }
-            authed_user = form.save_authenticate()
-            if authed_user:
-                messages.success(request, "خوش آمدید !", "success")
-                login(request,authed_user)
-                if request.next:
-                    return redirect(request.next)
-                return redirect("home:home")
-            # random_code = randint(0, 9999)
-            # RGScode.objects.create(
-            #     phone_number=cl["phone_number"], code=random_code)
-            # send_rgs_code(cl["phone_number"],random_code)
-
-            return redirect("accounts:user_login")
-
-        # messages.success(request, f"{user.full_name} etelaat na motabar", "success")
+            self.request.session["user_info"] = {
+                "phone_number": cl["phone_number"],
+                "email": cl["email"],
+                "full_name": cl["full_name"],
+                "password": cl["password"]
+            }
+            random_code = randint(0, 9999)
+            RGScode.objects.create(
+                phone_number=cl["phone_number"], code=random_code)
+            sms(cl["phone_number"], random_code)
+            return redirect("accounts:user_register_verify")
         return render(request, self.template_name, {"form": form})
+
 
 
 class UserLogInView(View):
@@ -65,7 +55,8 @@ class UserLogInView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            messages.success(request, f"برای ورود با حسابی دیگر ابتدا از حساب خود خارج شوید", "warning")
+            messages.success(
+                request, f"برای ورود با حسابی دیگر ابتدا از حساب خود خارج شوید", "warning")
             return redirect("home:home")
         request.next = request.GET.get("next")
         return super().dispatch(request, *args, **kwargs)
@@ -80,14 +71,15 @@ class UserLogInView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             cl = form.cleaned_data
-            user = authenticate(username=cl["phone_number"], password=cl["password"])
+            user = authenticate(
+                username=cl["phone_or_email"], password=cl["password"])
             if user:
                 login(request, user)
-                messages.success(request, "khosh amadid", "success")
+                messages.success(request, "خوش آمدید", "success")
                 if request.next:
                     return redirect(request.next)
                 return redirect("home:home")
-            messages.error(request, "shomare ya pass eshteba ast", "danger")
+            messages.error(request, "اطلاعات مطابقت ندارد !", "danger")
 
         return render(request, self.template_name, {"form": form})
 
@@ -105,12 +97,14 @@ class UserRegisterVerifyView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            messages.success(
+                request, "نمیتوانید وارد این صفحه شوید !", "success")
             return redirect("home:home")
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         context = {
-            "form": self.form_class
+            "form": self.form_class()
         }
         return render(request, self.template_name, context)
 
@@ -122,98 +116,57 @@ class UserRegisterVerifyView(View):
                 user_info = request.session["user_info"]
                 code = RGScode.objects.get(
                     phone_number=user_info["phone_number"], code=code)
-                user = User.objects.create_user(phone_number=user_info["phone_number"],
-                                                full_name=user_info["full_name"], password=user_info["password"])
+                User.objects.create_user(phone_number=user_info["phone_number"], email=user_info["email"],
+                                         full_name=user_info["full_name"], password=user_info["password"])
                 code.delete()
+                authed_user = authenticate(
+                    username=user_info["phone_number"], password=user_info["password"])
+                login(request, authed_user)
                 messages.success(
-                    request, f"{user.full_name} shoma sabt nam kardid", "success")
-                return redirect("accounts:user_login")
+                    request, f"شما ثبت نام کردید", "success")
+                return redirect("home:home")
             except RGScode.DoesNotExist:
-                messages.error(request, "code eshteba ast", "danger")
+                return render(request, self.template_name, {"form": form, "is_not_true_code": True})
         return render(request, self.template_name, {"form": form})
 
-# class UserProfileView(LoginRequiredMixin, View):
-#     template_name = "accounts/user_profile.html"
 
-#     def get(self, request):
-#         return render(request, self.template_name)
-
-
-# class UserProfileEditView(LoginRequiredMixin, View):
-#     form_class = UserProfileEditForm
-#     template_name = "accounts/user_profile_edit.html"
-
-#     def get(self, request):
-#         return render(request, self.template_name, {"form": self.form_class(instance=request.user)})
-
-#     def post(self, request):
-#         form = self.form_class(
-#             request.POST, request.FILES, instance=request.user)
-#         if form.is_valid():
-#             cl = form.cleaned_data
-#             user = form.save(commit=False)
-#             user.profile.img =cl["img"] if cl["img"] else user.profile.img
-#             user.profile.save()
-#             user.save()
-#             return redirect("accounts:user_profile")
-#         return render(request, self.template_name, {"form": form})
+class UserProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, "accounts/user_profile.html", {"user": request.user})
 
 
-# class AdminShowUserView(LoginRequiredMixin, View):
-#     template_name = "accounts/admin/show_users.html"
+class UserProfileEditView(LoginRequiredMixin, View):
+    form_class = UserProfileEditForm
+    template_name = "accounts/user_profile_edit.html"
 
-#     def dispatch(self, request, *args, **kwargs):
-#         if request.user.is_admin:
-#             return super().dispatch(request, *args, **kwargs)
-#         return redirect("accounts:user_profile")
+    def get(self, request):
+        return render(request, self.template_name, {"form": self.form_class(instance=request.user)})
 
-#     def get(self, request):
-#         users = User.objects.all()
-#         return render(request, self.template_name, {"users": users})
-
-
-# class AdminUserDeleteView(LoginRequiredMixin, View):
-#     def dispatch(self, request, *args, **kwargs):
-#         if request.user.is_admin:
-#             return super().dispatch(request, *args, **kwargs)
-#         return redirect("accounts:user_profile")
-
-#     def get(self, request, user_id):
-#         try:
-#             user = User.objects.get(pk=user_id)
-#             user.delete()
-#             messages.success(request, " user delete shode !", "success")
-#             return redirect("accounts:admin_show_user")
-#         except User.DoesNotExist:
-#             messages.error(request, " user delete shode !", "danger")
-#             return redirect("accounts:admin_show_user")
+    def post(self, request):
+        form = self.form_class(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.profile.img = request.FILES["img"]
+            user.profile.save()
+            user.save()
+            return redirect("accounts:user_profile")
+        return render(request, self.template_name, {"form": form})
 
 
-# class UserPasswordResetView(auth_views.PasswordResetView):
-# 	template_name = 'accounts/password_reset_form.html'
-# 	success_url = reverse_lazy('accounts:password_reset_done')
-# 	email_template_name = 'accounts/password_reset_email.html'
+class UserPasswordResetView(auth_views.PasswordResetView):
+    email_template_name = 'accounts/password_reset_email.html'
+    success_url = reverse_lazy('accounts:password_reset_done')
+    template_name = 'accounts/password_reset_form.html'
 
 
-# class UserPasswordResetDoneView(auth_views.PasswordResetDoneView):
-# 	template_name = 'accounts/password_reset_done.html'
+class UserPasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'accounts/password_reset_done.html'
 
 
-# class UserPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
-# 	template_name = 'accounts/password_reset_confirm.html'
-# 	success_url = reverse_lazy('accounts:password_reset_complete')
+class UserPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'accounts/password_reset_confirm.html'
+    success_url = reverse_lazy('accounts:password_reset_complete')
 
 
-# class UserPasswordResetCompleteView(auth_views.PasswordResetCompleteView):
-# 	template_name = 'accounts/password_reset_complete.html'
-
-
-
-
-
-
-
-
-
-# verify code redirect bayad log in shavad 
-# next ra dar login va register piyade sazi kon
+class UserPasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'accounts/password_reset_complete.html'

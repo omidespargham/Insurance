@@ -7,7 +7,6 @@ from django.core.exceptions import ValidationError
 class ThirdPartyForm(forms.Form):
     vehicle_type = forms.ChoiceField(choices=forms_choices.vehicle_type_chooses, widget=forms.Select(
         attrs={"class": "form-control"}))  # گروه وسیله نقلیه
-    # if you change car_type_name change the script #id too
     car_type_name = forms.ChoiceField(choices=forms_choices.car_type_name, widget=forms.Select(
         attrs={"class": "form-control"}))  # نوع خودرو
 
