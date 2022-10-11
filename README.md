@@ -14,7 +14,7 @@
 * پیاده سازی form field validation (clean)
 * پیاده سازی Customize Authentication به 2 صورت (Email,phone)
 * استفاده از Class Based Views
-* رعایت Clean Code
+* رعایت Clean Code و doc نویسی
 * استفاده از User authentication mixins درون View ها (LoginRequiredMixin)
 
 
